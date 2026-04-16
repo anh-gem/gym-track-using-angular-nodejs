@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 //TEMP CORS
 app.use(
   cors({
-    origin: "*",
+    origin: "https://mygymtrack.netlify.app",
     credentials: true,
   }),
 );
