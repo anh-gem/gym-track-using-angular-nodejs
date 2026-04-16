@@ -21,14 +21,14 @@ const generateToken = (member) => {
 const setCookies = (res, token) => {
   res.cookie("token", token, {
     httpOnly: true,
-    secure: false,
-    sameSite: "lax",
+    secure: true,
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
   res.cookie("loggedIn", "true", {
     httpOnly: false,
-    secure: false,
-    sameSite: "lax",
+    secure: true,
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 };
@@ -89,7 +89,7 @@ exports.loginMember = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    setCookies(res, generateToken(member)); // ← reusable helper
+    setCookies(res, generateToken(member)); // reusable helper
     res.status(200).json({ message: "Login successful" });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -125,7 +125,7 @@ exports.updateMyProfile = async (req, res) => {
       { name, phone },
       { new: true },
     ).select("-password");
-    res.json(updated);  
+    res.json(updated);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
