@@ -10,7 +10,13 @@ const app = express();
 app.use(express.json()); // parse JSON
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({ origin: "http://localhost:4200", credentials: true })); // enable CORS
+//TEMP CORS
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  }),
+);
 app.use(morgan("dev")); // logging
 app.use(cookieParser());
 
