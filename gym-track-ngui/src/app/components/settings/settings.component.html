@@ -1,0 +1,46 @@
+<div>
+
+  <form (ngSubmit)="updateProfile()" #form="ngForm" class="profile-form">
+    <h2>My Profile</h2>
+    <!-- Profile Picture -->
+
+    <div class="profile-pic-wrapper">
+
+      <img [src]="user.profilePicture" class="profile-pic" (click)="fileInput.click()" />
+
+      <input type="file" #fileInput hidden accept="image/*" (change)="onFileSelected($event)" />
+
+    </div>
+
+    <h2>{{user.name}}</h2>
+
+    <!-- Name -->
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)]="user.name" />
+
+    <!-- Email (read-only) -->
+    <label>Email</label>
+    <input type="email" name="email" [(ngModel)]="user.email" disabled />
+
+    <!-- Phone -->
+    <label>Phone</label>
+    <input type="text" name="phone" [(ngModel)]="user.phone" />
+
+    <!-- Plan -->
+    <label>Plan</label>
+    <input type="text" name="plan" [(ngModel)]="user.plan" disabled />
+
+    <!-- Join Date -->
+    <label>Join Date</label>
+    <input type="text" name="joinDate" [value]="user.joinDate | date:'mediumDate'" disabled />
+
+    <!-- Expiry Date -->
+    <label>Expiry Date</label>
+    <input type="text" name="expiryDate" [value]="user.expiryDate | date:'mediumDate'" disabled />
+
+    <!-- Active Status -->
+    <label>Status</label>
+    <input type="text" name="isActive" [value]="user.isActive ? 'Active' : 'Inactive'" disabled />
+    <button type="submit">Update Profile</button>
+  </form>
+</div>

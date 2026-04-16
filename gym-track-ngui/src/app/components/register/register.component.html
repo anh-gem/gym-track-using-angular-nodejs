@@ -1,0 +1,58 @@
+<div class="container">
+
+  <h2>Add new member</h2>
+
+  <!-- Profile Upload -->
+  <div class="upload-section">
+    <div class="upload-circle" (click)="fileInput.click()">
+      <img class="uploaded-image" *ngIf="imagePreview" [src]="imagePreview" alt="preview">
+
+      <span *ngIf="!imagePreview">+</span>
+    </div>
+
+    <div>
+      <p class="title">Profile photo</p>
+      <p class="subtitle">JPG or PNG, max 2MB</p>
+
+      <input type="file" (change)="onFileChange($event)" hidden #fileInput>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSubmit()">
+
+    <!-- Name -->
+    <div class="row">
+      <input type="text" placeholder="First name" [(ngModel)]="firstName" name="firstName" />
+      <input type="text" placeholder="Last name" [(ngModel)]="lastName" name="lastName" />
+    </div>
+
+    <!-- Email -->
+    <div class="row">
+      <input type="email" placeholder="Email" [(ngModel)]="formData.email" name="email" />
+    </div>
+    <!--Password-->
+    <div class="row">
+      <input type="password" placeholder="password" [(ngModel)]="formData.password" name="password" />
+    </div>
+    <!-- Phone -->
+    <div class="row">
+      <input type="text" placeholder="Phone" [(ngModel)]="formData.phone" name="phone" />
+    </div>
+    <!-- Plans -->
+    <div class="plans">
+      <div *ngFor="let p of plans" class="plan-card" [class.active]="formData.plan === p.name"
+        (click)="selectPlan(p.name)">
+        <p>{{ p.name | titlecase }}</p>
+        <span>{{ p.price }}</span>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="actions">
+      <button type="button" class="cancel" (click)="onCancel()">Cancel</button>
+      <button type="submit" class="submit">Create member</button>
+    </div>
+
+  </form>
+
+</div>

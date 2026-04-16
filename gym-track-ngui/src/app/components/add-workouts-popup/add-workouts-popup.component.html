@@ -1,0 +1,38 @@
+<div class="overlay" (click)="onClose()">
+  <div class="popup" (click)="$event.stopPropagation()">
+
+    <h2>Add Workout</h2>
+
+    <form (ngSubmit)="onSave()">
+      <!-- Exercise -->
+      <label for="exercise">Exercise</label>
+      <select [(ngModel)]="selectedExercise" name="exercise" id="exercise">
+        <option *ngFor="let ex of exercises" [ngValue]="ex">
+          {{ ex.name }} ({{ ex.category }})
+        </option>
+      </select>
+
+      <!-- Sets -->
+      <label for="sets">Sets</label>
+      <input type="number" id="sets" placeholder="Enter sets" [(ngModel)]="formData.sets" name="sets" />
+
+      <!-- Reps -->
+      <label for="reps">Reps</label>
+      <input type="number" id="reps" placeholder="Enter reps" [(ngModel)]="formData.reps" name="reps" />
+
+      <!-- Weight -->
+      <label for="weight">Weight (optional)</label>
+      <input type="number" id="weight" placeholder="Enter weight" [(ngModel)]="formData.weight" name="weight" />
+
+      <!-- Notes -->
+      <label for="notes">Notes (optional)</label>
+      <input type="text" id="notes" placeholder="Add notes" [(ngModel)]="formData.notes" name="notes" />
+
+      <!-- Buttons -->
+      <div class="actions">
+        <button type="submit">Save</button>
+        <button type="button" (click)="onClose()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

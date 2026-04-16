@@ -1,0 +1,33 @@
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+
+    <div class="logo">
+      <i class="fas fa-dumbbell"></i>
+      <h2>GymTrack</h2>
+    </div>
+
+  </div>
+  <div class="sidebar-profile" *ngIf="member">
+    <img [src]="member.profilePicture || 'src/assets/default-avatar.png'" class="sidebar-avatar"
+      routerLink="/welcometogymtrack/settings" />
+    <div>
+      <p class="sidebar-name">{{ member.name }}</p>
+      <p class="sidebar-plan">{{ member.plan | titlecase }}</p>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <ul class="nav-top">
+      <li routerLink="/welcometogymtrack/dashboard" routerLinkActive="active">📊 Dashboard</li>
+      <li routerLink="/welcometogymtrack/workouts" routerLinkActive="active">💪 Workouts</li>
+      <li routerLink="/welcometogymtrack/settings" routerLinkActive="active">⚙️ Settings</li>
+    </ul>
+
+    <ul class="nav-bottom">
+      <li (click)="onLogout()" id="logout">
+        🚪 Logout ➜
+      </li>
+    </ul>
+  </nav>
+
+</aside>

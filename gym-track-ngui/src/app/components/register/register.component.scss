@@ -1,0 +1,99 @@
+.container {
+  background: #1e293b;
+  color: white;
+  padding: 25px;
+  border-radius: 16px;
+  width: 500px;
+  margin: auto;
+}
+
+/* Upload */
+.upload-section {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.upload-circle {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.uploaded-image{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: #fff;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+/* Row */
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+/* Plans */
+.plans {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.plan-card {
+  flex: 1;
+  border: 1px solid #444;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.plan-card.active {
+  border: 2px solid #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.cancel {
+  flex: 1;
+  background: transparent;
+  border: 1px solid #555;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.submit {
+  flex: 1;
+  background: #10b981;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}

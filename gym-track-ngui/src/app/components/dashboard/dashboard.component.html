@@ -1,0 +1,121 @@
+<app-add-workouts-popup *ngIf="showPopup" (close)="closePopup()" (save)="handleSave()">
+</app-add-workouts-popup>3
+
+<div class="dashboard-layout">
+
+
+  <!-- Main Content -->
+
+  <main class="main-content">
+
+    <!-- Top Bar -->
+    <div class="topbar">
+      <div>
+        <h1>Welcome back, {{ member?.name }} 👋</h1>
+        <p class="topbar-date">{{ today | date:'EEEE, MMM dd yyyy' }}</p>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" *ngIf="!member">
+      <p>Loading...</p>
+    </div>
+
+    <ng-container *ngIf="member">
+
+      <!-- Status Banner — show if expiring -->
+      <div class="banner warning" *ngIf="member.status === 'expiring'">
+        ⚠️ Your plan is expiring soon on
+        {{ member.expiryDate | date:'MMM dd, yyyy' }}
+      </div>
+
+      <div class="banner danger" *ngIf="member.status === 'expired'">
+        ❌ Your plan has expired. Please renew.
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="cards-grid">
+
+        <div class="card">
+          <p class="card-label">Plan</p>
+          <h3 class="card-value">{{ member.plan | titlecase }}</h3>
+          <span class="badge" [ngClass]="member.status">
+            {{ member.status | titlecase }}
+          </span>
+        </div>
+
+        <div class="card">
+          <p class="card-label">Member Since</p>
+          <h3 class="card-value">{{ member.joinDate | date:'MMM yyyy' }}</h3>
+        </div>
+
+        <div class="card">
+          <p class="card-label">Plan Expires</p>
+          <h3 class="card-value">{{ member.expiryDate | date:'MMM dd, yyyy' }}</h3>
+        </div>
+
+        <div class="card">
+          <p class="card-label">Total Workouts</p>
+          <h3 class="card-value">{{ workouts.length }}</h3>
+        </div>
+
+        <div class="card">
+          <p class="card-label">This Week</p>
+          <h3 class="card-value">{{ thisWeekWorkouts }}</h3>
+        </div>
+
+        <div class="card">
+          <p class="card-label">Favorite Exercise</p>
+          <h3 class="card-value">{{ favoriteExercise || 'N/A' }}</h3>
+        </div>
+
+      </div>
+
+      <!-- Recent Workouts -->
+      <div class="section">
+        <div class="section-header">
+          <h3>Recent Workouts</h3>
+          <button class="btn-outline" (click)="openPopup()">
+            + Add
+          </button>
+
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="workouts.length === 0">
+          <p>No workouts logged yet.</p>
+        </div>
+
+        <!-- Workouts Table -->
+        <table class="workout-table" *ngIf="workouts.length > 0">
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th>Category</th>
+              <th>Sets</th>
+              <th>Reps</th>
+              <th>Weight</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let workout of workouts">
+              <td>{{ workout.exercise }}</td>
+              <td>{{ workout.category }}</td>
+              <td>{{ workout.sets }}</td>
+              <td>{{ workout.reps }}</td>
+              <td>{{ workout.weight ? workout.weight + ' kg' : '-' }}</td>
+              <td>{{ workout.date | date:'MMM dd, yyyy' }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </ng-container>
+
+  </main>
+
+
+
+</div>

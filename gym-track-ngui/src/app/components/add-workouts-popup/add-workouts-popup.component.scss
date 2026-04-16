@@ -1,0 +1,86 @@
+.popup {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.popup h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Labels */
+.popup label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* Inputs + select */
+.popup input,
+.popup select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Focus effect */
+.popup input:focus,
+.popup select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.actions button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Save */
+.actions button:first-child {
+   background: #10b981; /* primary */
+  color: white;
+}
+
+/* Cancel */
+.actions button:last-child {
+  background: #f1f5f9; /* neutral */
+  color: #333;
+  border: 1px solid #ddd;
+}
+.overlay {
+  position: fixed;   /* VERY IMPORTANT */
+  top: 0;
+  left: 0;
+  width: 100vw;      /* force full width */
+  height: 100vh;     /* force full height */
+
+  background: rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
