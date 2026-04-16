@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  private API = 'http://localhost:3000/api';
+  private API = environment.apiUrl;
   imagePreview: string | null = null;
   firstName: string = '';
   lastName: string = '';
