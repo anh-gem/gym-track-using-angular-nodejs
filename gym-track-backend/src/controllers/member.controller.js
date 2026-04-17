@@ -14,7 +14,7 @@ const getExpiryDate = (plan) => {
 
 const generateToken = (member) => {
   return jwt.sign({ id: member._id, role: "member" }, process.env.JWT_SECRET, {
-    expiresIn: "7d",
+    expiresIn: "5m",
   });
 };
 
