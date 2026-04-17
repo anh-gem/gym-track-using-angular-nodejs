@@ -30,6 +30,7 @@ p {
 .input-group {
   text-align: left;
   margin-bottom: 15px;
+  position: relative;
 }
 
 label {
@@ -40,12 +41,17 @@ label {
 input {
   width: 100%;
   padding: 10px;
-  margin-top: 5px;
+  padding-right: 60px; /* space for eye */
+  box-sizing: border-box;
+  // width: 100%;
+  // padding-block: 10px;
+  // margin-top: 5px;
   border-radius: 8px;
   border: 1px solid #475569;
   background: #0f172a;
   color: #fff;
   outline: none;
+
 }
 
 input::placeholder {
@@ -77,4 +83,30 @@ input::placeholder {
 .footer a {
   color: #10b981;
   text-decoration: none;
+}
+
+// .eye-icon{
+//   position: absolute;
+//   // right: 10px;
+//   // top: 70%;
+//   transform: translateY(-181%);
+//   margin-left: 31%;
+//   background: transparent;
+//   border: none;
+//   color: #10b981;
+//   font-size: 12px;
+//   cursor: pointer;
+//   padding: 0;
+// }
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 66%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #10b981;
+  font-size: 12px;
+  cursor: pointer;
 }

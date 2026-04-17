@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  showPassword = false;
   loginData: LoginData = {
     email: '',
     password: '',
@@ -31,5 +32,8 @@ export class LoginComponent {
         console.log('Login failed', err);
       },
     });
+  }
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 }
