@@ -9,7 +9,7 @@
 
   </div>
   <div class="sidebar-profile" *ngIf="member">
-    <img [src]="member.profilePicture || 'src/assets/default-avatar.png'" class="sidebar-avatar"
+    <img [src]="member?.profilePicture || 'default-avatar.png'" (error)="onImageError($event)" class="sidebar-avatar"
       routerLink="/welcometogymtrack/settings" />
     <div>
       <p class="sidebar-name">{{ member.name }}</p>

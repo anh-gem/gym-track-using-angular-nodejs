@@ -5,6 +5,7 @@
   border-radius: 16px;
   width: 500px;
   margin: auto;
+  // position: relative;
 }
 
 /* Upload */
@@ -12,6 +13,7 @@
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .upload-circle {
@@ -97,3 +99,23 @@ input {
   padding: 10px;
   border-radius: 8px;
 }
+
+.eye-icon {
+  position: absolute;
+  right: 12px;
+    top: 34%;
+  transform: translateY(-40%);
+  background: transparent;
+  border: none;
+  color: #10b981;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#pwd{
+  position: relative;
+  .input{
+    display: block;
+  }
+}
+

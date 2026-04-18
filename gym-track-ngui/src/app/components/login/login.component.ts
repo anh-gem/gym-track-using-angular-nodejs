@@ -29,6 +29,7 @@ export class LoginComponent {
         this.router.navigate(['/welcometogymtrack/dashboard']);
       },
       error: (err) => {
+        alert('Your email or password is not correct, please try again!');
         console.log('Login failed', err);
       },
     });

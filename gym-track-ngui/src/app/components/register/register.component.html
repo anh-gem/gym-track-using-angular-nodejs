@@ -6,53 +6,83 @@
   <div class="upload-section">
     <div class="upload-circle" (click)="fileInput.click()">
       <img class="uploaded-image" *ngIf="imagePreview" [src]="imagePreview" alt="preview">
-
       <span *ngIf="!imagePreview">+</span>
     </div>
 
     <div>
       <p class="title">Profile photo</p>
       <p class="subtitle">JPG or PNG, max 2MB</p>
-
       <input type="file" (change)="onFileChange($event)" hidden #fileInput>
     </div>
   </div>
 
-  <form (ngSubmit)="onSubmit()">
 
-    <!-- Name -->
-    <div class="row">
-      <input type="text" placeholder="First name" [(ngModel)]="firstName" name="firstName" />
-      <input type="text" placeholder="Last name" [(ngModel)]="lastName" name="lastName" />
-    </div>
+  <!-- Add #registerForm template reference -->
+  <div class="divForm">
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
 
-    <!-- Email -->
-    <div class="row">
-      <input type="email" placeholder="Email" [(ngModel)]="formData.email" name="email" />
-    </div>
-    <!--Password-->
-    <div class="row">
-      <input type="password" placeholder="password" [(ngModel)]="formData.password" name="password" />
-    </div>
-    <!-- Phone -->
-    <div class="row">
-      <input type="text" placeholder="Phone" [(ngModel)]="formData.phone" name="phone" />
-    </div>
-    <!-- Plans -->
-    <div class="plans">
-      <div *ngFor="let p of plans" class="plan-card" [class.active]="formData.plan === p.name"
-        (click)="selectPlan(p.name)">
-        <p>{{ p.name | titlecase }}</p>
-        <span>{{ p.price }}</span>
+      <!-- Name -->
+      <div class="row">
+        <input type="text" placeholder="First name" [(ngModel)]="firstName" name="firstName" required />
+        <input type="text" placeholder="Last name" [(ngModel)]="lastName" name="lastName" required />
       </div>
-    </div>
 
-    <!-- Buttons -->
-    <div class="actions">
-      <button type="button" class="cancel" (click)="onCancel()">Cancel</button>
-      <button type="submit" class="submit">Create member</button>
-    </div>
+      <!-- Email -->
+      <div class="row">
+        <input type="email" placeholder="Email" [(ngModel)]="formData.email" name="email" required
+          #emailRef="ngModel" />
+      </div>
 
-  </form>
+      <!-- Password -->
+      <div class="row" id="pwd">
+        <input placeholder="password" [(ngModel)]="formData.password" name="password"
+          [type]="showPassword ? 'text' : 'password'" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$"
+          required #passRef="ngModel" />
+        <span class="eye-icon" (click)="togglePassword()">
+          {{ showPassword ? 'Hide' : 'Show' }}
+        </span>
+
+      </div>
+
+      <!-- Phone -->
+      <div class="row">
+        <input type="text" placeholder="Phone" [(ngModel)]="formData.phone" name="phone" pattern="^[0-9]{10}$" required
+          #phoneRef="ngModel" />
+      </div>
+
+      <!-- Plans -->
+      <div class="plans">
+        <div *ngFor="let p of plans" class="plan-card" [class.active]="formData.plan === p.name"
+          (click)="selectPlan(p.name)">
+          <p>{{ p.name | titlecase }}</p>
+          <span>{{ p.price }}</span>
+        </div>
+      </div>
+
+
+      <!-- Buttons -->
+      <div class="actions">
+        <button type="button" class="cancel" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="submit">Create member</button>
+      </div>
+
+      <!-- Validation Messages -->
+      <div *ngIf="emailRef && emailRef.invalid && emailRef.touched" style="color: red; margin: 10px 0;">
+        <small *ngIf="emailRef.errors?.['required']">Email is required</small>
+        <small *ngIf="emailRef.errors?.['email']">Invalid email format</small>
+      </div>
+
+      <div *ngIf="phoneRef && phoneRef.invalid && phoneRef.touched" style="color: red; margin: 10px 0;">
+        <small *ngIf="phoneRef.errors?.['required']">Phone is required</small>
+        <small *ngIf="phoneRef.errors?.['pattern']">Enter valid 10-digit number</small>
+      </div>
+
+      <div *ngIf="passRef && passRef.invalid && passRef.touched" style="color: red; margin: 10px 0;">
+        <small *ngIf="passRef.errors?.['required']">Password required</small>
+        <small *ngIf="passRef.errors?.['pattern']">Must be 8+ chars, uppercase, lowercase, number & special
+          char</small>
+      </div>
+    </form>
+  </div>
 
 </div>

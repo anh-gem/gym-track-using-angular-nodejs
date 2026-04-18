@@ -6,7 +6,8 @@
 
     <div class="profile-pic-wrapper">
 
-      <img [src]="user.profilePicture" class="profile-pic" (click)="fileInput.click()" />
+      <img [src]="user?.profilePicture || 'default-avatar.png'" class="profile-pic" (click)="fileInput.click()" />
+
 
       <input type="file" #fileInput hidden accept="image/*" (change)="onFileSelected($event)" />
 

@@ -17,9 +17,9 @@
       <label>Password</label>
       <input [type]="showPassword ? 'text' : 'password'" placeholder="********" [(ngModel)]="loginData.password"
         name="password" required />
-      <button class="eye-icon" (click)="togglePassword()">
+      <span class="eye-icon" (click)="togglePassword();$event.stopPropagation(); $event.preventDefault()">
         {{ showPassword ? 'Hide' : 'Show' }}
-      </button>
+      </span>
     </div>
 
     <button type="submit" class="btn">Sign in</button>

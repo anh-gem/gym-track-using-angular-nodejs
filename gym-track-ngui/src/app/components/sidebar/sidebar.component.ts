@@ -45,4 +45,7 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
+  onImageError(event: any) {
+    event.target.src = 'default-avatar.png';
+  }
 }

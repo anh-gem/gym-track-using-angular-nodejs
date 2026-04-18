@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormsModule, type NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -13,6 +13,8 @@ import { environment } from '../../../environments/environment';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
+  @ViewChild('registerForm') registerForm!: NgForm;
+  showPassword = false;
   private API = environment.apiUrl;
   imagePreview: string | null = null;
   firstName: string = '';
@@ -60,6 +62,17 @@ export class RegisterComponent {
   }
 
   onSubmit() {
+    // VALIDATE FORM FIRST
+    if (!this.registerForm.valid) {
+      alert('Please fill all fields correctly');
+      return;
+    }
+
+    // VALIDATE NAME
+    if (!this.firstName.trim() || !this.lastName.trim()) {
+      alert('Please enter first and last name');
+      return;
+    }
     this.pay();
   }
   onRegister() {
@@ -142,5 +155,9 @@ export class RegisterComponent {
     } catch (err) {
       console.error(err);
     }
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 }
