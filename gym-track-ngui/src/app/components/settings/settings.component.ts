@@ -31,7 +31,8 @@ export class SettingsComponent implements OnInit {
     this.phone = this.user.phone;
     this.authService.updateProfile(this.user).subscribe({
       next: (response) => {
-        console.log('Registered', response);
+        alert('Profile updated successfully!');
+        console.log('Upadated profile', response);
       },
     });
   }
