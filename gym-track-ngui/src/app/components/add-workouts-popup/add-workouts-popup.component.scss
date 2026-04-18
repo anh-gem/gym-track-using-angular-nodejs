@@ -1,14 +1,14 @@
 .popup {
-  background: #fff;
-  padding: 30px;
-  border-radius: 16px;
-  width: 400px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+     background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    align-items: center;
+    justify-content: center;
 }
 
 /* Title */
@@ -28,10 +28,12 @@
 .popup input,
 .popup select {
   width: 100%;
-  padding: 10px;
+  padding-block: 10px;
+  padding-inline: 10px; 
   border-radius: 8px;
   border: 1px solid #ddd;
   font-size: 14px;
+  box-sizing: border-box; 
 }
 
 /* Focus effect */
